@@ -3,6 +3,7 @@ kind: Kustomization
 namespace: yettel-prod
 
 resources:
+  - config/
   - ../templates/
 
 patches:
