@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: yettel-prod-app
+  namespace: argocd
+spec:
+  destination:
+    namespace: yettel-prod
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: src/prod--all-in-one-start
+    repoURL: https://github.com/balazskrizsan/yettel_runner
+    targetRevision: master
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: false
+    syncOptions:
+      - CreateNamespace=true

@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: yettel-backend-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+    kubernetes.io/ingress.class: nginx
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - "yettel-prod.balazskrizsan.com"
+      secretName: cert-frontend
+  rules:
+    - host: "yettel-prod.balazskrizsan.com"
+      http:
+        paths:
+          - pathType: ImplementationSpecific
+            path: "/(.*)"
+            backend:
+              service:
+                name: ssp-backend
+                port:
+                  number: 46001
