@@ -17,7 +17,7 @@ patches:
         {
           "op": "replace",
           "path": "/spec/template/spec/containers/0/image",
-          "value": "kbalazsworks/yettel_backend:commit_sha_short_796e653"
+          "value": "kbalazsworks/yettel_backend:commit_sha_short_791de97"
         },
         {
           "op": "replace",
