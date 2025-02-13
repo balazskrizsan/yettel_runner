@@ -9,7 +9,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: src/yettel-prod--all-in-one-start
+    path: src/demo-prod--all-in-one-start
     repoURL: https://github.com/balazskrizsan/yettel_runner
     targetRevision: master
   syncPolicy:
