@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: yettel-backend
+  name: demo-backend
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /$1
     kubernetes.io/ingress.class: nginx
@@ -9,16 +9,16 @@ spec:
   ingressClassName: nginx
   tls:
     - hosts:
-        - "yettel-prod.balazskrizsan.com"
+        - "demo-prod.balazskrizsan.com"
       secretName: cert-frontend
   rules:
-    - host: "yettel-prod.balazskrizsan.com"
+    - host: "demo-prod.balazskrizsan.com"
       http:
         paths:
           - pathType: ImplementationSpecific
             path: "/(.*)"
             backend:
               service:
-                name: yettel-backend
+                name: demo-backend
                 port:
                   number: 46001

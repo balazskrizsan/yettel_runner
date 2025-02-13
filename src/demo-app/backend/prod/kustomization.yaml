@@ -1,6 +1,6 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-namespace: yettel-prod
+namespace: demo-prod
 
 resources:
   - config/
@@ -11,7 +11,7 @@ patches:
       group: apps
       version: v1
       kind: Deployment
-      name: yettel-backend
+      name: demo-backend
     patch: |-
       [
         {
@@ -22,7 +22,7 @@ patches:
         {
           "op": "replace",
           "path": "/spec/template/spec/initContainers/0/command/2",
-          "value": "while [ \"$(kubectl get job secret-manager-job -n yettel-prod -o=jsonpath='{.status.succeeded}')\" != \"1\" ]; do\n  echo \"Waiting for pre-deploy job completion...\";\n  sleep 2;\n done"
+          "value": "while [ \"$(kubectl get job secret-manager-job -n demo-prod -o=jsonpath='{.status.succeeded}')\" != \"1\" ]; do\n  echo \"Waiting for pre-deploy job completion...\";\n  sleep 2;\n done"
         }
       ]
 
@@ -30,7 +30,7 @@ patches:
       group: networking.k8s.io
       version: v1
       kind: Ingress
-      name: yettel-backend
+      name: demo-backend
     patch: |-
       [
         {
@@ -41,11 +41,11 @@ patches:
         {
           "op": "replace",
           "path": "/spec/rules/0/host",
-          "value": "yettel-prod-api.balazskrizsan.com"
+          "value": "demo-prod-api.balazskrizsan.com"
         },
         {
           "op": "replace",
           "path": "/spec/tls/0/hosts",
-          "value": ["yettel-prod-api.balazskrizsan.com"]
+          "value": ["demo-prod-api.balazskrizsan.com"]
         }
       ]

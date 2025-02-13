@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: yettel-backend
+  name: demo-backend
   labels:
-    app: yettel-backend-label
+    app: demo-backend-label
 spec:
   replicas: 1
   selector:
     matchLabels:
-      service: yettel-backend
+      service: demo-backend
   template:
     metadata:
       labels:
-        app: yettel-backend-label
-        service: yettel-backend
+        app: demo-backend-label
+        service: demo-backend
     spec:
       initContainers:
         - name: wait-for-job
@@ -23,7 +23,7 @@ spec:
             - "-c"
             - "placeholder: while [ \"$(kubectl get job secret-manager-job -n ENV_NAME -o=jsonpath='{.status.succeeded}')\" != \"1\" ]; do\n  echo \"Waiting for pre-deploy job completion...\";\n  sleep 2;\n done"
       containers:
-        - name: yettel-backend
+        - name: demo-backend
           image: placeholder:placeholder
           imagePullPolicy: Always
           ports:
