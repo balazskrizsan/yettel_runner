@@ -11,6 +11,7 @@ patches:
       version: v1
       kind: Job
       name: secret-manager-job
+      namespace: demo-prod
     patch: |-
       [
         {
