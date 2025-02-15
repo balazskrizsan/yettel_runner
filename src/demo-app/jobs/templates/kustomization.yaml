@@ -1,2 +1,3 @@
 resources:
   - secret-manager-job.yaml
+  - cert-manager-job.yaml
