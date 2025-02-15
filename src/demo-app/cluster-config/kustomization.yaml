@@ -3,7 +3,7 @@ kind: Kustomization
 namespace: demo-prod
 
 resources:
-  - set-cluster-role.yaml
-  - set-cluster-role-binding.yaml
-  - set-role.yaml
-  - set-role-binding.yaml
+  - secret-manager/set-cluster-role.yaml
+  - secret-manager/set-cluster-role-binding.yaml
+  - secret-manager/set-role.yaml
+  - secret-manager/set-role-binding.yaml
