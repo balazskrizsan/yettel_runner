@@ -4,9 +4,12 @@ metadata:
   name: cluster-secret-manager
   namespace: demo-prod
 rules:
+  - apiGroups: [ "" ]
+    resources: [ "secrets" ]
+    verbs: [ "get", "list", "create", "watch", "delete", "update" ]
   - apiGroups: [""]
-    resources: ["secrets"]
-    verbs: ["get", "list", "create", "watch", "delete", "update"]
-  - apiGroups: ["batch"]
-    resources: ["secrets", "jobs"]
-    verbs: ["get", "list", "create", "watch", "delete", "update"]
+    resources: ["pods"]
+    verbs: ["get", "watch", "list"]
+  - apiGroups: [ "batch" ]
+    resources: [ "secrets", "jobs" ]
+    verbs: [ "get", "list", "create", "watch", "delete", "update" ]

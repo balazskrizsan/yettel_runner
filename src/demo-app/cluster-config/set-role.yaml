@@ -4,9 +4,12 @@ metadata:
   name: argocd-secret-manager
   namespace: demo-prod
 rules:
+  - apiGroups: [ "" ]
+    resources: [ "secrets" ]
+    verbs: [ "get", "list", "create", "watch", "delete", "update" ]
   - apiGroups: [""]
-    resources: ["secrets"]
-    verbs: ["get", "list", "create", "watch", "delete", "update"]
+    resources: ["pods"]
+    verbs: ["get", "watch", "list"]
   - apiGroups: [ "batch" ]
     resources: [ "jobs" ]
     verbs: [ "get", "list", "create", "watch", "delete", "update" ]
