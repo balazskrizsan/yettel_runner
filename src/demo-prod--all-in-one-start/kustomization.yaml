@@ -3,5 +3,6 @@ kind: Kustomization
 
 resources:
   - ../demo-app/cluster-config
+  - ../demo-app/namespace-config/prod
   - ../demo-app/jobs/prod
   - ../demo-app/backend/prod
