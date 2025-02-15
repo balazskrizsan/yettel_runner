@@ -10,7 +10,7 @@ configMapGenerator:
     namespace: ssp-prod
     literals:
       - NATIVE_REFLECTION_CONFIGURATION_GENERATOR_ENABLED=false
-      - SERVER_ENV=DEV
+      - SERVER_ENV=PROD
       - SERVER_PORT=8080
       - SERVER_SOCKET_FULL_HOST=wss://api-ssp-prod.balazskrizsan.com/ws
       - SERVER_SSL_ENABLED=false
